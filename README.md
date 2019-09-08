@@ -24,6 +24,21 @@ Para executar o projeto localmente devem ser atendidos os seguintes requisitos:
   - Extensão PHP **XML**
 - **[MariaDB](https://mariadb.com/downloads/#mariadb_platform) >= 10.4.7** _com ou sem HeidiSql_ ou **[MySQL](https://dev.mysql.com/downloads/windows/installer/8.0.html) >= 8.0** _com ou sem Workbench_.
 
+### Composer
+Instale o composer e o coloque no `path` do seu sistema.
+
+Após clonar repositório, dentro da pasta destino (geralmente `/sustentabilidade-site`) execute o seguinte comando para instalar as dependências de seu projeto:
+
+```powershell
+composer install
+```
+### Ambiente
+Verifique se seu projeto conta com um arquivo `.env`, caso não conte, faça uma cópia do arquivo `.env.example` e renomeie-a para `.env`. Então gere sua chave de aplicação com o comando:
+```powershell
+php artisan key:generate
+```
+
+
 ### Pacotes de instalação
 Os requisitos listados acima podem ser obtidos através dos links fornecidos ou através de pacotes de instalação e/ou configuração de ambientes de desenvolvimentos.
 
@@ -72,6 +87,22 @@ Por fim, para configurar o MariaDB modifique a seguinte linha em seu `homestead.
 - mariadb: true
 ```
 Para uma lista de todas as funcionalidades opcionais que podem ser habilitadas, acesse a [documentação oficial](https://laravel.com/docs/6.0/homestead#installing-optional-features), em inglês.
+
+Após isso, basta executar o seguinte comando na pasta do projeto:
+```
+vagrant up
+```
+
+#### XAMPP
+O [XAMPP](https://www.apachefriends.org/pt_br/download.html) é um distribuição do Apache para Windows e Linux.
+
+As versões a partir da 7.2.22 atendem os requisitos do sistema para o PHP e o MariaDB.
+
+Por motivos de simplicidade, é recomendado que o site atendido por este pacote seja hospedado com o servidor interno de testes do Laravel, o `artisan`. De dentro da pasta do projeto clonado execute:
+```powershell
+php artisan serve
+```
+Todavia, o projeto pode ser hospedado no Apache quem vem incluído no pacote, mas sua configuração não será coberta aqui.
 
 ### IDE para banco de dados
 Você pode achar necessário, durante o desenvolvimento acompanhar os dados direto no banco de dados, assim como talve edita-los e realizar outros tipos de manutenção.
