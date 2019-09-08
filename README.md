@@ -2,11 +2,11 @@
 
 Projeto de site focado em sustentabilidade para disciplina de Gerenciamento de Projetos e Modelagem de Sistemas.
 
-O projeto back-end será um site seguindo a filosofia Rest e arquitetura MVC.
+O projeto back-end será um site seguindo a filosofia REST e arquitetura MVC.
 
-# Indíce
+# Sumário
 - [Sustentabilidade Site _(nome provisório)_](#sustentabilidade-site-nome-provis%c3%b3rio)
-- [Indíce](#ind%c3%adce)
+- [Sumário](#sum%c3%a1rio)
 - [Instalação](#instala%c3%a7%c3%a3o)
   - [Requisitos](#requisitos)
     - [Composer](#composer)
@@ -15,6 +15,12 @@ O projeto back-end será um site seguindo a filosofia Rest e arquitetura MVC.
       - [_Homestead_](#homestead)
       - [XAMPP](#xampp)
       - [Manual](#manual)
+        - [BCMath](#bcmath)
+        - [Ctype](#ctype)
+        - [Mbstring](#mbstring)
+        - [OpenSSL](#openssl)
+        - [PDO](#pdo)
+    - [Servindo a aplicação](#servindo-a-aplica%c3%a7%c3%a3o)
     - [IDE para banco de dados](#ide-para-banco-de-dados)
 
 # Instalação
@@ -30,12 +36,9 @@ Para executar o projeto localmente devem ser atendidos os seguintes requisitos:
 - **[Laravel](laravel.com/docs/6.0) 6.0**
   - Extensão PHP **BCMath**
   - Extensão PHP **Ctype**
-  - Extensão PHP **JSON**
   - Extensão PHP **Mbstring**
   - Extensão PHP **OpenSSL**
   - Extensão PHP **PDO**
-  - Extensão PHP **Tokenizer**
-  - Extensão PHP **XML**
 - **[MariaDB](https://mariadb.com/downloads/#mariadb_platform) >= 10.4.7** _com ou sem HeidiSql_ ou **[MySQL](https://dev.mysql.com/downloads/windows/installer/8.0.html) >= 8.0** _com ou sem Workbench_.
 
 ### Composer
@@ -69,7 +72,7 @@ Os requisitos listados acima podem ser obtidos através dos links fornecidos ou 
 Aqui serão abordadas algumas opções, lembrando que caberá a você seguir os guias aqui fornecidos e realizar a pesquisa na internet sobre como fazer a aplicação funcionar de acordo com seu método de instalação.
 
 #### _Homestead_
-[_Homestead_](https://laravel.com/docs/6.0/homestead) é um ambiente de desenolvimento provido pelo próprio Laravel com a intenção de agilizar a preparação do ambiente de desenvolvimento. Ele executa em qualquer Windows, Mac ou Linux e atende a todos os requisitos listados.
+[_Homestead_](https://laravel.com/docs/6.0/homestead) é um ambiente de desenvolvimento provido pelo próprio Laravel com a intenção de agilizar a preparação do ambiente de desenvolvimento. Ele executa em qualquer Windows, Mac ou Linux e atende a todos os requisitos listados.
 
 Se você estiver interessado em uma lista de tudo que o _Homestead_ oferece e as diversas formas de configuração, acesse a [documentação oficial](https://laravel.com/docs/6.0/homestead#included-software), em inglês.
 
@@ -123,28 +126,83 @@ O [XAMPP](https://www.apachefriends.org/pt_br/download.html) é um distribuiçã
 
 As versões a partir da 7.2.22 atendem os requisitos do sistema para o PHP e o MariaDB.
 
-Como esta instalação é mais manual, você deve criar a database que será usada pela aplicação e, então, preemcje o `.env` com as credenciais de acesso.
+Como esta instalação tem uma abordagem mais _DIY_, você deve habilitar as extensões PHP e  criar a database que será usada pela aplicação e, então, preencher o `.env` com as credenciais de acesso, conforme pode ser visto na [instalação manual](#manual).
+
+#### Manual
+Caso prefira instalar cada componente separadamente para ter somente o estritamente necessário, você deverá habilitar manualmente as extensões PHP no seu arquivo `php.ini`, localizando-as e deixando da seguinte forma:
+
+##### BCMath
+```ini
+[bcmath]
+; Number of decimal digits for all bcmath functions.
+; http://php.net/bcmath.scale
+bcmath.scale = 0
+```
+
+##### Ctype
+```ini
+; Possui suporte nativo nas versões atuais do PHP,
+; a não ser que você esteja utilizando FreeBSD
+```
+
+##### Mbstring
+```ini
+; Para Linux e Mac
+extension=mbstring
+
+; Para Windows, a seguinte configuração costuma funcionar melhor
+; mas, nada te impede de experimentar a anterior.
+; extension=mbstring
+extension=php_mbstring.dll
+```
+
+##### OpenSSL
+```ini
+; Para Linux e Mac
+extension=openssl
+
+; Para Windows, a seguinte configuração costuma funcionar melhor
+; mas, nada te impede de experimentar a anterior.
+; extension=openssl
+extension=php_openssl.dll
+```
+
+##### PDO
+```ini
+extension=pdo_mysql
+```
+> **Observação**
+>
+> No ___Linux___ e no ___Mac___ podem ser necessárias ___instalações de pacotes___ relacionados a essas extensões.
+>
+> No ___Windows___ pode ser necessário ___download de aquivos DLL___ relacionados a essas extensões.
+>
+> Esses downloads e instalações __não serão tratados aqui__.
+
+Além disso, você deve se lembrar de configurar sua conexão com o banco de dados no `.env`.
 
 ```php
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=[nome da database]
-DB_USERNAME=[usuario]
+DB_USERNAME=[usuário]
 DB_PASSWORD=[senha, se houver]
 ```
 
-Por motivos de simplicidade, é recomendado que o site atendido por este pacote seja hospedado com o servidor interno de testes do Laravel, o `artisan`. De dentro da pasta do projeto clonado execute:
+### Servindo a aplicação
+Para poder acessar o site deve-se servir o mesmo, ou seja, executar um servidor que o disponibilize.
+
+Nativamente o Laravel trás essa funcionalidade em sua ferramenta de linha de comando, o `artisan`, portanto não é necessária a instalação de um servidor dedicado. Todo ambiente Laravel pode executar o servidor interno do `artisan` com o seguinte comando, a partir da raíz do projeto:
 ```powershell
 php artisan serve
 ```
-Todavia, o projeto pode ser hospedado no Apache quem vem incluído no pacote, mas sua configuração não será coberta aqui.
+> O ambiente do _Homestead_ utiliza um servidor Nginx pré-configurado e automático, eliminando a necessidade de execução deste comando.
 
-#### Manual
-Caso prefira instalar cada componente separadamente para ter somente o estritamente necessário, deve somente se lembrar de configurar sua conexão com o banco de dados no `.env` como na instalação via XAMPP.
+Caso você deseje um servidor mais robusto, podem ser utilizados o [Apache](https://httpd.apache.org) e o [Nginx](https://nginx.org/en/). Embora suas configurações e instalações não sejam cobertas aqui, a [documentação do Laravel](https://laravel.com/docs/6.0/installation#web-server-configuration) tem breves _insides_ sobre o assunto.
 
 ### IDE para banco de dados
-Você pode achar necessário, durante o desenvolvimento acompanhar os dados direto no banco de dados, assim como talve edita-los e realizar outros tipos de manutenção.
+Você pode achar necessário, durante o desenvolvimento acompanhar os dados direto no banco de dados, assim como talvez edita-los e realizar outros tipos de manutenção.
 
 Para isso pode-se utilizar a linha de comando com do seu SGBD escolhido ou uma **IDE para banco de dados**. 
 
@@ -152,4 +210,4 @@ Caso opte por utilizar uma IDE, recomendo uma das seguintes, embora possa usar q
 
 - [DataGrip](https://www.jetbrains.com/datagrip/), IDE proprietária da _JetBrains_ compatível com inúmeros tipos de bancos de dados. Pode ser obtida por meio de uma licença para estudantes.
 - [HeidiSQL](https://www.heidisql.com/download.php), IDE gratuita compatível com MySQL, MariaDB, PostgreSQL a SQL Server. Vem junto com o MariaDB em seu instalador.
-- MySQL Workench, IDE gratuita da _Oracle_ compatível com MySQL e MariaDB, pode ser instalada pelo mesmo instalador do MySQL.
+- MySQL Workbench, IDE gratuita da _Oracle_ compatível com MySQL e MariaDB, pode ser instalada pelo mesmo instalador do MySQL.
