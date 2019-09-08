@@ -48,12 +48,30 @@ vagrant add box laravel/homestead
 
 > Escolha o provider correto, de acordo com o virtualizador escolhido!
 
+Clone este repositório e crie um arquivo `homestead.yaml` na pasta do projeto com o seguinte comando:
+
+No Windows:
+```powershell
+vendor\\bin\\homestead make
+```
+No Mac e no Linux:
+```bash
+php vendor/bin/homestead make
+```
+
 Para que o _homestead_ receba as requisições para o seu site, você deve alterar o arquivo de `hosts` do seu sistema. No windows sua localização constuma ser `C:\Windows\System32\drivers\etc\hosts`, já no Mac e no Linux ele normalmente se encontra em `/etc/hosts`.
 
 Insira a seguinte linha no arquivo de `hosts`:
 ```
 192.168.10.10    homestead.test
 ```
+
+Por fim, para configurar o MariaDB modifique a seguinte linha em seu `homestead.yaml`, na seção de `features`:
+
+```yaml
+- mariadb: true
+```
+Para uma lista de todas as funcionalidades opcionais que podem ser habilitadas, acesse a [documentação oficial](https://laravel.com/docs/6.0/homestead#installing-optional-features), em inglês.
 
 ### IDE para banco de dados
 Você pode achar necessário, durante o desenvolvimento acompanhar os dados direto no banco de dados, assim como talve edita-los e realizar outros tipos de manutenção.
