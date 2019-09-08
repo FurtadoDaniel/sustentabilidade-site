@@ -9,7 +9,7 @@ O projeto back-end será um site seguindo a filosofia Rest e arquitetura MVC.
 Para executar o projeto localmente devem ser atendidos os seguintes requisitos:
 
 > #### :exclamation: ATENÇÃO :exclamation:
-> Não instale os programas antes de ler toda a seção, pois serão apresentadas alternativas que podem ser mais convenientes ou adequadas ao seu uso/conhecimento.
+> Com exceção do **Composer**, **não** instale os programas antes de ler toda a seção, pois serão apresentadas alternativas que podem ser mais convenientes ou adequadas ao seu uso/conhecimento.
 
 - **[PHP](https://www.php.net/downloads.php) >= 7.2.0** 
 - **[Composer](https://getcomposer.org/download/)**
@@ -34,14 +34,26 @@ Aqui serão abordadas algumas opções, lembrando que caberá a você seguir os 
 
 Se você estiver interessado em uma lista de tudo que o _Homestead_ oferece e as diversas formas de configuração, acesse a [documentação oficial](https://laravel.com/docs/6.0/homestead#included-software), em inglês.
 
-Para essa instalação você irá precisardos seguintes componentes instalados:
+Para essa instalação você irá precisar dos seguintes componentes instalados:
 
-- PHP;
-- Composer;
 - Um virtualizador como _[VMWare](https://www.vmware.com/br.html), [VirtualBox](https://www.virtualbox.org/wiki/Downloads)_ ou _HyperV_;
-- e [Vagrant]()
-###### Esse guia utilizará VMWare.
+- e [Vagrant](https://www.vagrantup.com/downloads.html).
+###### Esse guia utilizará VirtualBox.
 
+Com tudo instalado, execute o seguinte comando no seu terminal:
+```powershell
+vagrant add box laravel/homestead
+```
+> Dependendo do seu antivírus ou firewall, a conexão pode ser bloqueada e gerar um erro de SSL. Coloque a conexão na whitelist do antivírus ou firewall e tente novamente.
+
+> Escolha o provider correto, de acordo com o virtualizador escolhido!
+
+Para que o _homestead_ receba as requisições para o seu site, você deve alterar o arquivo de `hosts` do seu sistema. No windows sua localização constuma ser `C:\Windows\System32\drivers\etc\hosts`, já no Mac e no Linux ele normalmente se encontra em `/etc/hosts`.
+
+Insira a seguinte linha no arquivo de `hosts`:
+```
+192.168.10.10    homestead.test
+```
 
 ### IDE para banco de dados
 Você pode achar necessário, durante o desenvolvimento acompanhar os dados direto no banco de dados, assim como talve edita-los e realizar outros tipos de manutenção.
