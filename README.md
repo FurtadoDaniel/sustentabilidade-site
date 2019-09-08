@@ -4,11 +4,25 @@ Projeto de site focado em sustentabilidade para disciplina de Gerenciamento de P
 
 O projeto back-end será um site seguindo a filosofia Rest e arquitetura MVC.
 
+# Indíce
+- [Sustentabilidade Site _(nome provisório)_](#sustentabilidade-site-nome-provis%c3%b3rio)
+- [Indíce](#ind%c3%adce)
+- [Instalação](#instala%c3%a7%c3%a3o)
+  - [Requisitos](#requisitos)
+    - [Composer](#composer)
+    - [Ambiente](#ambiente)
+    - [Pacotes de instalação](#pacotes-de-instala%c3%a7%c3%a3o)
+      - [_Homestead_](#homestead)
+      - [XAMPP](#xampp)
+      - [Manual](#manual)
+    - [IDE para banco de dados](#ide-para-banco-de-dados)
+
 # Instalação
 ## Requisitos
 Para executar o projeto localmente devem ser atendidos os seguintes requisitos:
 
 > #### :exclamation: ATENÇÃO :exclamation:
+>
 > Com exceção do **Composer**, **não** instale os programas antes de ler toda a seção, pois serão apresentadas alternativas que podem ser mais convenientes ou adequadas ao seu uso/conhecimento.
 
 - **[PHP](https://www.php.net/downloads.php) >= 7.2.0** 
@@ -38,6 +52,16 @@ Verifique se seu projeto conta com um arquivo `.env`, caso não conte, faça uma
 php artisan key:generate
 ```
 
+Caso tenha feito seu ambiente com o Homestead, acesse via seu ambiente vagrant:
+```powershell
+vagrant ssh
+```
+Em seu ambiente Vagrant, vá ao diretório do projeto, geralmente `~/code/sustentabilidade-site`, e gere a chave:
+```bash
+php artisan key:generate
+```
+
+Para sair do ambiente, digite o comando `logout`.
 
 ### Pacotes de instalação
 Os requisitos listados acima podem ser obtidos através dos links fornecidos ou através de pacotes de instalação e/ou configuração de ambientes de desenvolvimentos.
@@ -53,7 +77,8 @@ Para essa instalação você irá precisar dos seguintes componentes instalados:
 
 - Um virtualizador como _[VMWare](https://www.vmware.com/br.html), [VirtualBox](https://www.virtualbox.org/wiki/Downloads)_ ou _HyperV_;
 - e [Vagrant](https://www.vagrantup.com/downloads.html).
-###### Esse guia utilizará VirtualBox.
+
+<small> Esse guia utilizará VirtualBox.</small>
 
 Com tudo instalado, execute o seguinte comando no seu terminal:
 ```powershell
@@ -98,11 +123,25 @@ O [XAMPP](https://www.apachefriends.org/pt_br/download.html) é um distribuiçã
 
 As versões a partir da 7.2.22 atendem os requisitos do sistema para o PHP e o MariaDB.
 
+Como esta instalação é mais manual, você deve criar a database que será usada pela aplicação e, então, preemcje o `.env` com as credenciais de acesso.
+
+```php
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=[nome da database]
+DB_USERNAME=[usuario]
+DB_PASSWORD=[senha, se houver]
+```
+
 Por motivos de simplicidade, é recomendado que o site atendido por este pacote seja hospedado com o servidor interno de testes do Laravel, o `artisan`. De dentro da pasta do projeto clonado execute:
 ```powershell
 php artisan serve
 ```
 Todavia, o projeto pode ser hospedado no Apache quem vem incluído no pacote, mas sua configuração não será coberta aqui.
+
+#### Manual
+Caso prefira instalar cada componente separadamente para ter somente o estritamente necessário, deve somente se lembrar de configurar sua conexão com o banco de dados no `.env` como na instalação via XAMPP.
 
 ### IDE para banco de dados
 Você pode achar necessário, durante o desenvolvimento acompanhar os dados direto no banco de dados, assim como talve edita-los e realizar outros tipos de manutenção.
