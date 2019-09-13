@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateAnexosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('anexos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-			$table->string('genero');
-			$table->string('cpf',11)->nullable(false);
-            $table->rememberToken();
+			$table->string('url',150)->nullable(false);
+			$table->string('titulo',30)->nullable(false);
+			$table->integer('tipo_anexo')->nullable(false);	/*I-Imagem, A-Artigo, O-Outros*/  
+			$table->unsignedBigInteger('usuario_id');
+			$table->foreign('usuario_id')->references('id')->on('users');			
+			
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('anexos');
     }
 }
