@@ -85,7 +85,7 @@ Para essa instalação você irá precisar dos seguintes componentes instalados:
 
 Com tudo instalado, execute o seguinte comando no seu terminal:
 ```powershell
-vagrant add box laravel/homestead
+vagrant box add laravel/homestead
 ```
 > Dependendo do seu antivírus ou firewall, a conexão pode ser bloqueada e gerar um erro de SSL. Coloque a conexão na whitelist do antivírus ou firewall e tente novamente.
 
@@ -99,7 +99,7 @@ vendor\\bin\\homestead make
 ```
 No Mac e no Linux:
 ```bash
-php vendor/bin/homestead make
+vendor/bin/homestead make
 ```
 
 Para que o _homestead_ receba as requisições para o seu site, você deve alterar o arquivo de `hosts` do seu sistema. No windows sua localização constuma ser `C:\Windows\System32\drivers\etc\hosts`, já no Mac e no Linux ele normalmente se encontra em `/etc/hosts`.
