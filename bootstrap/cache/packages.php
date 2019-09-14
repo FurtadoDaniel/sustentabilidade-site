@@ -24,6 +24,13 @@
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
     ),
   ),
+  'mad-web/laravel-enum' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'MadWeb\\Enum\\EnumServiceProvider',
+    ),
+  ),
   'nesbot/carbon' => 
   array (
     'providers' => 

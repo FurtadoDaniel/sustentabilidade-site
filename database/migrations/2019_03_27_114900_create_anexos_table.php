@@ -13,15 +13,19 @@ class CreateAnexosTable extends Migration
      */
     public function up()
     {
+        /**
+         * Cria a tabela Anexos.
+         * @author Joao Gabriel C. Melo <joao.melo@iq.ufrj.br>
+         */
         Schema::create('anexos', function (Blueprint $table) {
             $table->bigIncrements('id');
-			$table->string('url',150)->nullable(false);
-			$table->string('titulo',30)->nullable(false);
-			$table->integer('tipo_anexo')->nullable(false);	/*I-Imagem, A-Artigo, O-Outros*/  
-			$table->unsignedBigInteger('usuario_id');
-			$table->foreign('usuario_id')->references('id')->on('users');			
-			
-            $table->timestamps();
+            $table->dateTime('created_at');
+            $table->softDeletes();
+            $table->unsignedInteger('chamado_id');
+            $table->string('nome');
+            $table->string('path');
+
+            $table->foreign('chamado_id')->references('id')->on('chamados');
         });
     }
 
