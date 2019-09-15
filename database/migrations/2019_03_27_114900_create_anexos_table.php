@@ -21,7 +21,7 @@ class CreateAnexosTable extends Migration
             $table->bigIncrements('id');
             $table->dateTime('created_at');
             $table->softDeletes();
-            $table->unsignedInteger('chamado_id');
+            $table->morphs('anexavel');
             $table->string('nome');
             $table->string('path');
 
