@@ -55,17 +55,6 @@ Verifique se seu projeto conta com um arquivo `.env`, caso não conte, faça uma
 php artisan key:generate
 ```
 
-Caso tenha feito seu ambiente com o Homestead, acesse via seu ambiente vagrant:
-```powershell
-vagrant ssh
-```
-Em seu ambiente Vagrant, vá ao diretório do projeto, geralmente `~/code/sustentabilidade-site`, e gere a chave:
-```bash
-php artisan key:generate
-```
-
-Para sair do ambiente, digite o comando `logout`.
-
 ### Pacotes de instalação
 Os requisitos listados acima podem ser obtidos através dos links fornecidos ou através de pacotes de instalação e/ou configuração de ambientes de desenvolvimentos.
 
