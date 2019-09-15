@@ -22,7 +22,12 @@ class CreateUsersTable extends Migration
 			$table->string('genero');
 			$table->string('cpf',11)->nullable(false);
             $table->rememberToken();
+            $table->unsignedBigInteger('animal_id')->nullable();
+            $table->unsignedBigInteger('arvore_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('animal_id')->references('id')->on('especies');
+            $table->foreign('arvore_id')->references('id')->on('especies');
         });
     }
 
