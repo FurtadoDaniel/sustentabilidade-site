@@ -22,8 +22,8 @@ class CreateTransacoesTable extends Migration
 			$table->unsignedBigInteger('especie_id');
 			$table->foreign('especie_id')->references('id')->on('especies');
 			$table->date('data_transacao')->nullable(false);		
-			$table->unsignedBigInteger('usuario_id');
-			$table->foreign('usuario_id')->references('id')->on('users');
+			$table->unsignedBigInteger('user_id');
+			$table->foreign('user_id')->references('id')->on('users');
 			
             $table->timestamps();
         });

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\PostTypeEnum;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -15,15 +16,11 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-			$table->integer('tipo_post')->nullable(false);
-			$table->string('titulo_post',30)->nullable(false);
-			$table->text('conteudo')->nullable();
-			$table->unsignedBigInteger('anexo_id');
-			$table->foreign('anexo_id')->references('id')->on('anexos');
-			$table->date('data_inicio')->nullable(false);
-			$table->date('data_mod')->nullable(false);
-			$table->unsignedBigInteger('usuario_id');
-			$table->foreign('usuario_id')->references('id')->on('users');
+			$table->enum('tipo', PostTypeEnum::values())->default(PostTypeEnum::__default);
+			$table->string('titulo', 30)->nullable(false);
+			$table->string('conteudo')->nullable();
+			$table->unsignedBigInteger('user_id');
+			$table->foreign('user_id')->references('id')->on('users');
 			
             $table->timestamps();
         });

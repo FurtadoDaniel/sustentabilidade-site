@@ -19,7 +19,6 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-			$table->string('genero');
 			$table->string('cpf',11)->nullable(false);
             $table->rememberToken();
             $table->unsignedBigInteger('animal_id')->nullable();

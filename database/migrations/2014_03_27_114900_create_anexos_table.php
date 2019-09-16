@@ -19,13 +19,11 @@ class CreateAnexosTable extends Migration
          */
         Schema::create('anexos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->dateTime('created_at');
+            $table->timestamps();
             $table->softDeletes();
             $table->morphs('anexavel');
             $table->string('nome');
             $table->string('path');
-
-            $table->foreign('chamado_id')->references('id')->on('chamados');
         });
     }
 

@@ -24,3 +24,15 @@
 # Install Node.js v10.x
 #curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 #sudo apt-get install -y nodejs
+
+# Atualiza a distro com os pacotes mais recentes
+sudo apt-get update 
+sudp apt-get upgrade -y
+
+# Realiza uma migracao atualizada da database
+cd code
+artisan migrate:fresh
+
+# Popula database com dados de teste
+#artisan ds:seed
+#cd ..

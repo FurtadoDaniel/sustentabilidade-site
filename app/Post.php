@@ -11,10 +11,10 @@ class Post extends Model
 
     public function anexo()
     {
-        return $this->morphOne(Anexo::class, anexavel);
+        return $this->morphOne(Anexo::class, 'anexavel');
     }
     
-    public function autor()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
