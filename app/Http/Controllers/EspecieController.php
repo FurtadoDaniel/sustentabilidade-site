@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Especie;
+use App\Http\Resources\EspecieResource;
 use Illuminate\Http\Request;
 
 class EspecieController extends Controller
@@ -14,7 +15,7 @@ class EspecieController extends Controller
      */
     public function index()
     {
-        //
+        return EspecieResource::collection(Especie::all());
     }
 
     /**
@@ -36,7 +37,7 @@ class EspecieController extends Controller
      */
     public function show(Especie $especie)
     {
-        //
+        return new EspecieResource($especie);
     }
 
     /**

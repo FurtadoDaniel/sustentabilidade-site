@@ -27,12 +27,13 @@
 
 # Atualiza a distro com os pacotes mais recentes
 sudo apt-get update 
-sudp apt-get upgrade -y
+sudo apt-get upgrade -y
 
 # Realiza uma migracao atualizada da database
+# e preenche com dados de teste
 cd code
-artisan migrate:fresh
+artisan migrate:fresh --seed
 
 # Popula database com dados de teste
 #artisan ds:seed
-#cd ..
+cd ..

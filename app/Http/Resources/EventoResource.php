@@ -14,6 +14,18 @@ class EventoResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id'        =>  $this->id,
+            'titulo'    =>  $this->titulo,
+            'local'     =>  $this->local,
+            'descricao' =>  $this->descricao,
+            $this->anexo->nome  =>  $this->anexo->path,
+            'inicio'    =>  $this->inicio,
+            'fim'       =>  $this->fim,
+            'user'      =>  new UserResource($this->user),
+            'created_at'=>  $this->created_at,
+            'updated_at'=>  $this->updated_at,
+            'link'      =>  route('eventos.show', $this)
+        ];
     }
 }

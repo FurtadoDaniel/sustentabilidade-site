@@ -22,6 +22,10 @@ Route::apiResources([
     'parameters' => [
         'especies'      =>  'especie',
         'transacoes'    =>  'transacao'
+    ],
+    'only'  =>  [
+        'index',
+        'show'
     ]
 ]);
 Route::middleware('auth:api')->get('/user', function (Request $request) {

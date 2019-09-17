@@ -2,7 +2,6 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Anexo;
 use App\Enums\PostTypeEnum;
 use App\Post;
 use Faker\Generator as Faker;
