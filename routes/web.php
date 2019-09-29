@@ -11,6 +11,3 @@
 |
 */
 
-Route::get('/', function () {
-    return 'parabéns, você ganhou um cupom de rolê!';
-});
