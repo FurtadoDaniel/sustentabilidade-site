@@ -14,6 +14,22 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resources([
+    'especies'  =>  'EspecieController',
+    'eventos'   =>  'EventoController',
+    'posts'     =>  'PostController',
+    'produtos'  =>  'ProdutoController',
+    'transacoes'=>  'TransacaoController'
+], [
+    'parameters' => [
+        'especies'      =>  'especie',
+        'transacoes'    =>  'transacao'
+    ],
+    'only'  =>  [
+        'index',
+        'show'
+    ]
+]);
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
