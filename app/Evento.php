@@ -5,11 +5,13 @@ namespace App;
 use App\Traits\Anexos;
 use Illuminate\Database\Eloquent\Model;
 use MadWeb\Enum\EnumCastable;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 class Evento extends Model
 {
     use Anexos;
     use EnumCastable;
+    use HasMediaTrait;
 
     public function anexo()
     {

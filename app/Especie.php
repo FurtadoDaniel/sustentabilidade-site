@@ -7,21 +7,18 @@ use App\Enums\IucnRedListEnum;
 use App\Traits\Anexos;
 use Illuminate\Database\Eloquent\Model;
 use MadWeb\Enum\EnumCastable;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 class Especie extends Model
 {
     use Anexos;
     use EnumCastable;
+    use HasMediaTrait;
 
     protected $casts = [
         'tipo' => EspecieTypeEnum::class,
         'extincao' => IucnRedListEnum::class
     ];
-    
-    public function anexo()
-    {
-        return $this->morphOne(Anexo::class, 'anexavel');
-    }
     
     public function transacoes()
     {
