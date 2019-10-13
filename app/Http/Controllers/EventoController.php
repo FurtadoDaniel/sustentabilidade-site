@@ -26,7 +26,9 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $evento = new Evento($request->all());
+        $evento->save();
+        return $evento;
     }
 
     /**
@@ -37,7 +39,7 @@ class EventoController extends Controller
      */
     public function show(Evento $evento)
     {
-        return new EventoResource($evento);
+        return $evento;
     }
 
     /**
@@ -49,7 +51,8 @@ class EventoController extends Controller
      */
     public function update(Request $request, Evento $evento)
     {
-        //
+        $evento->update($request->all());
+        return back();
     }
 
     /**

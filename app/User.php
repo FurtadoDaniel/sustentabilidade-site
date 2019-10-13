@@ -52,6 +52,11 @@ class User extends Authenticatable
         return $this->hasMany(Evento::class);
     }
 
+    public function confirmacoes()
+    {
+        return $this->belongsToMany(Evento::class)->as('confirmacao');
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class);
