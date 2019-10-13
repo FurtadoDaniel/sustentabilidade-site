@@ -24,10 +24,6 @@ Route::resources([
     'parameters' => [
         'especies'      =>  'especie',
         'transacoes'    =>  'transacao'
-    ],
-    'only'  =>  [
-        'index',
-        'show'
     ]
 ]);
 Auth::routes();

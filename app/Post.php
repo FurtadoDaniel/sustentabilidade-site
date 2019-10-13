@@ -3,14 +3,13 @@
 namespace App;
 
 use App\Enums\PostTypeEnum;
-use App\Traits\Anexos;
 use Illuminate\Database\Eloquent\Model;
 use MadWeb\Enum\EnumCastable;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Post extends Model
+class Post extends Model implements HasMedia
 {
-    use Anexos;
     use EnumCastable;
     use HasMediaTrait;
 
@@ -20,11 +19,6 @@ class Post extends Model
     protected $fillable = [
         'conteudo', 'tipo', 'titulo' 
     ];
-
-    public function anexo()
-    {
-        return $this->morphOne(Anexo::class, 'anexavel');
-    }
     
     public function user()
     {

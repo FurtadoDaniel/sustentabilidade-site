@@ -15,7 +15,7 @@ class EventoController extends Controller
      */
     public function index()
     {
-        return EventoResource::collection(Evento::all());
+        return Evento::all();
     }
 
     /**
@@ -26,7 +26,7 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
