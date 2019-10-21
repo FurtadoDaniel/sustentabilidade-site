@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Evento') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('/evento') }}">
+                    <form method="POST" action="{{ route('abaixo-assinados.store') }}">
                         @csrf
 
                         <div class="form-group row" >

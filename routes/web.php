@@ -15,11 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resources([
-    'especies'  =>  'EspecieController',
-    'eventos'   =>  'EventoController',
-    'posts'     =>  'PostController',
-    'produtos'  =>  'ProdutoController',
-    'transacoes'=>  'TransacaoController'
+    'abaixo-assinados'  =>  'AbaixoAssinadoController',
+    'especies'          =>  'EspecieController',
+    'eventos'           =>  'EventoController',
+    'posts'             =>  'PostController',
+    'produtos'          =>  'ProdutoController',
+    'transacoes'        =>  'TransacaoController'
 ], [
     'parameters' => [
         'especies'      =>  'especie',
