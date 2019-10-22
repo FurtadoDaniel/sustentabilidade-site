@@ -15,7 +15,16 @@ class CreateAbaixoAssinadosTable extends Migration
     {
         Schema::create('abaixo_assinados', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('titulo');
+            $table->longText('descricao');
+            $table->unsignedBigInteger('meta');
+            $table->date('fim');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
         });
     }
 
