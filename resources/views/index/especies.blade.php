@@ -3,6 +3,16 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                @if (session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <h4 class="alert-heading">{{ session('success.titulo') }}</h4>
+                        <hr />
+                        <p>{{ session('success.corpo') }}</p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 @foreach($especies as $especie)
                     <div class="card">
                         <a href="{{ url('/adotar/'. $especie->id)}}"> <div  class="card-header">{{$especie->nome}}</div> </a>

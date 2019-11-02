@@ -13,5 +13,5 @@ final class EspecieTypeEnum extends Enum
     const __default = self::ANIMAL;
 
     const ANIMAL = 'animal';
-    const ARVORE = 'arvore';
+    const PLANTA = 'planta';
 }

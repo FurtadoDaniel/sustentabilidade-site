@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Especie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class EspecieController extends Controller
 {
@@ -57,12 +58,19 @@ class EspecieController extends Controller
      */
     public function update(Request $request, Especie $especie)
     {
+        
         $request->validate([
-            'cartao'    =>  'bail|required|size:16|regex:/[0-9]/',
-            'csv'       =>  'bail|required|size:3|regex:/[0-9]/',
-            'validade'  =>  'bail|required|date|after:' . Carbon::now()->year
+            'cartao'    =>  'bail|required|size:16|regex:/[0-9]+/',
+            'codigo'    =>  'bail|required|size:3|regex:/[0-9]+/'
         ]);
-        return back();
+
+        $request->user()->adocoes()->attach($especie);
+
+        return redirect(route('especies.index'))
+            ->with('success', [
+                'titulo'    =>  'Parabéns!',
+                'corpo'     =>  'Sua doação foi realizada com sucesso.'
+            ]);
     }
 
     /**
