@@ -8,12 +8,12 @@
                     <div class="card-header">{{ __('Pesqusiar') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('/eventos') }}">
+                        <form method="POST" action="{{ route('pesquisar') }}">
                             @csrf
                             <div class="form-group row">
                                 <label for="tipo_acao" class="col-md-4 col-form-label text-md-right">{{ __('Tipo Ação') }}</label>
                                 <div class="col-md-6">
-                                    <select id="tipo_acao" type="text" class="form-control " name="tipo_acao" value="{{ $tipo_acao }}">
+                                    <select id="tipo_acao" type="text" class="form-control " name="tipo_acao" >
                                         <option value="passeata">Passeata</option>
                                         <option value="comunitaria">Atividade Comunitária</option>
                                         <option value="seminario">Seminário</option>
@@ -25,14 +25,14 @@
                             <div class="form-group row">
                                 <label for="cidade" class="col-md-4 col-form-label text-md-right">{{ __('Cidade') }}</label>
                                 <div class="col-md-6">
-                                    <input id="cidade" type="text" class="form-control " name="cidade" value="{{ $cidade }}">
+                                    <input id="cidade" type="text" class="form-control " name="cidade" >
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="data" class="col-md-4 col-form-label text-md-right">{{ __('data') }}</label>
                                 <div class="col-md-6">
-                                    <input id="data" type="date" class="form-control " name="data" value="{{ $data }}">
+                                    <input id="data" type="date" class="form-control " name="data">
                                 </div>
                             </div>
 
@@ -50,13 +50,20 @@
 
 
             <div class="col-md-8">
-                @foreach($eventos as #evento)
+                @foreach($eventos as $evento)
                     <div class="card">
-                        <div class="card-header">{{$evento->nome}}</div>
+                        <div class="card-header">{{$evento->titulo}}</div>
                         <div class="card-body">
                             <div class="col-md-6">
-                                <h4> Data </h4>
-                                <p> {{ $evento->data }} </p>
+                                <h4> Data Inicio</h4>
+                                <p> {{ $evento->inicio }} </p>
+                            </div>
+                            <div class="col-md-6">
+                                <h4> Data Fim</h4>
+                                <p> {{ $evento->fim }} </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p> {{ $evento->tipo }} </p>
                             </div>
                             <div class="col-md-6">
                                 <h4> Local </h4>
@@ -64,7 +71,7 @@
                             </div>
                             <div class="col-md-6">
                                 <h4> </h4>
-                                <p> {{ $evento->desc }} </p>
+                                <p> {{ $evento->descricao }} </p>
                             </div>
                         </div>
                     </div>

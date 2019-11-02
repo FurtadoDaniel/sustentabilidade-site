@@ -34,6 +34,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/especies', 'EspecieController@index');
 Route::get('/adotar/{id}', 'EspecieController@show');
 
+Route::post('/eventos_pesquisar', 'EventoController@pesquisar')->name('pesquisar');
+
 Route::view('/sucesso', 'sucesso')->name('Sucesso');
 
 
