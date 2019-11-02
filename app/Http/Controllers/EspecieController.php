@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Especie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class EspecieController extends Controller
 {
@@ -42,15 +43,9 @@ class EspecieController extends Controller
      * @param  \App\Especie  $especie
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Especie $especie)
     {
-        $especie = Especie::findOrFail($id);
-        return view('Forms.vender',['titulo_doacao' => 'Adotar uma espécie',
-                                          'tipo' => $especie->tipo,
-                                          'id' => $especie->id,
-                                          'item' => $especie->nome,
-                                          'valor' => 0,
-                                          'custo_modificavel' => true]);
+        return view('Forms.adocao', ['especie' => $especie]);
     }
 
     /**
@@ -62,7 +57,11 @@ class EspecieController extends Controller
      */
     public function update(Request $request, Especie $especie)
     {
-        $especie->update($request->all());
+        $request->validate([
+            'cartao'    =>  'bail|required|size:16|regex:/[0-9]/',
+            'csv'       =>  'bail|required|size:3|regex:/[0-9]/',
+            'validade'  =>  'bail|required|date|after:' . Carbon::now()->year
+        ]);
         return back();
     }
 
