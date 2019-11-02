@@ -1,12 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <script type="text/javascript">
-        $('.valor').mask('#.##0,00', {reverse: true});
-    </script>
-
-
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -14,7 +8,7 @@
                     <div class="card-header">{{ $titulo_doacao }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="GET" action="{{ route('Sucesso') }}">
                             @csrf
 
                             <div class="form-group row" >
@@ -32,16 +26,23 @@
 
 
                             <div class="form-group row">
-                                <label for="item" class="col-md-4 col-form-label text-md-right">{{ __('Item') }}</label>
+                                <label for="item" class="col-md-4 col-form-label text-md-right">{{ $tipo }}</label>
                                 <div class="col-md-6">
-                                    <input id="item" type="text" class="form-control" name="item" value="{{ $item }}" readonly>
+                                    @if(@custo_modificavel)
+                                        <input id="item" type="text" class="form-control" name="item" value="{{ $item }}">
+
+                                    @else
+                                        <input id="item" type="text" class="form-control" name="item" value="{{ $item }}" readonly>
+                                    @endif
+
+
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="valor" class="col-md-4 col-form-label text-md-right">{{ __('Valor') }}</label>
                                 <div class="col-md-6">
-                                    <input id="valor" type="text" class="form-control" name="valor" value="{{ $valor }}" readonly="$custo_modificavel">
+                                        <input id="valor" type="number" min="0.00" step="0.01" class="form-control" name="valor" >
                                 </div>
                             </div>
 
@@ -70,7 +71,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="codigo" class="col-md-4 col-form-label text-md-right">{{ __('Código Cartão') }}</label>
+                                <label for="codigo" class="col-md-4 col-form-label text-md-right">{{ __('CSV') }}</label>
                                 <div class="col-md-6">
                                     <input id="codigo" type="text" class="form-control @error('codigo') inválido @enderror" name="codigo"  >
                                     @error('codigo')

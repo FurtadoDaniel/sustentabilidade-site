@@ -14,7 +14,8 @@ class EspecieController extends Controller
      */
     public function index()
     {
-        return Especie::all();
+
+        return view('index.especies',['especies' => Especie::all()]);
     }
 
     /**
@@ -36,9 +37,15 @@ class EspecieController extends Controller
      * @param  \App\Especie  $especie
      * @return \Illuminate\Http\Response
      */
-    public function show(Especie $especie)
+    public function show($id)
     {
-        return $especie;
+        $especie = Especie::findOrFail($id);
+        return view('Forms.vender',['titulo_doacao' => 'Adotar uma espécie',
+                                          'tipo' => $especie->tipo,
+                                          'id' => $especie->id,
+                                          'item' => $especie->nome,
+                                          'valor' => 0,
+                                          'custo_modificavel' => true]);
     }
 
     /**

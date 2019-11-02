@@ -17,12 +17,13 @@ class CreateEspeciesTable extends Migration
     {
         Schema::create('especies', function (Blueprint $table) {
             $table->bigIncrements('id');
-			
+
 			$table->enum('tipo', EspecieTypeEnum::values())->default(EspecieTypeEnum::__default);
 			$table->string('nome',20)->nullable(false);
 			$table->string('nome_cientifico',255)->nullable();
             $table->text('descricao')->nullable();
             $table->enum('extincao', IucnRedListEnum::values())->default(IucnRedListEnum::__default);
+            $table->text('kit')->nullable();
             $table->timestamps();
         });
     }
