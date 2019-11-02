@@ -18,6 +18,10 @@
                                 <p> {{ $especie->kit }} </p>
                             </div>
                         </div>
+                        <div class="card-footer">
+                            <a href="{{ route('especies.show', $especie) }}" class="btn btn-primary">Detalhes</a>
+                            <a href="{{ route('adotar', $especie) }}" class="btn btn-outline-success">Adotar</a>
+                        </div>
                     </div>
                 @endforeach
             </div>

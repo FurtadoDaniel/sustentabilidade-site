@@ -22,6 +22,11 @@ class Especie extends Model implements HasMedia
         'id', 'created_at', 'updated_at'
     ];
     
+    public function scopeDoTipo($query, $tipo)
+    {
+        return $query->where('tipo', 'like', $tipo);
+    }
+
     public function transacoes()
     {
         return $this->hasMany(Transacao::class);

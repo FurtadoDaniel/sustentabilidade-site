@@ -12,10 +12,15 @@ class EspecieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(?string $tipo = null)
     {
-
-        return view('index.especies',['especies' => Especie::all()]);
+        return view('index.especies', [
+            'especies' => Especie::when($tipo, function ($query, $tipo) {
+                return $query->doTipo($tipo)->get();
+            }, function ($query) {
+                return $query->get();
+            })
+        ]);
     }
 
     /**
