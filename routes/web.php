@@ -19,6 +19,7 @@ Route::get('/especies/{tipo}', [
     'uses'  =>  'EspecieController@index',
     'as'    =>  'especies.index'
 ]);
+
 Route::resources([
     'abaixo-assinados'  =>  'AbaixoAssinadoController',
     'especies'          =>  'EspecieController',
@@ -32,10 +33,12 @@ Route::resources([
         'transacoes'    =>  'transacao'
     ]
 ]);
+
+
 Route::get('/adotar/{especie}', 'EspecieController@show')->name('adotar')->middleware('auth');
-
 Route::view('/sucesso', 'sucesso')->name('Sucesso');
-
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/eventos_pesquisar', 'EventoController@pesquisar')->name('pesquisar');
+
 
 Auth::routes();
