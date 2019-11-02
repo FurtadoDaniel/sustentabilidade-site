@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'cpf', 'password',
+        'name', 'email', 'password', 'cpf'
     ];
 
     /**
@@ -36,40 +36,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function animal()
-    {
-        return $this->hasOne(Especie::class, 'id', 'animal_id');
-    }
-    
-    public function arvore()
-    {
-        return $this->hasOne(Especie::class, 'id', 'arvore_id');
-    }
-
-    public function eventos()
-    {
-        return $this->hasMany(Evento::class);
-    }
-
-    public function confirmacoes()
-    {
-        return $this->belongsToMany(Evento::class)->as('confirmacao');
-    }
-
-    public function posts()
-    {
-        return $this->hasMany(Post::class);
-    }
-
-    public function transacoes()
-    {
-        return $this->hasMany(Transacao::class);
-    }
-
-    public function produtos()
-    {
-        return $this->hasMany(Produto::class);
-    }
-
 }

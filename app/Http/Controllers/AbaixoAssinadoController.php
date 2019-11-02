@@ -35,7 +35,8 @@ class AbaixoAssinadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        (new AbaixoAssinado($request->all()))->save();
+        return back();
     }
 
     /**
