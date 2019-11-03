@@ -14,7 +14,7 @@
                     </div>
                 @endif
                 @foreach($especies as $especie)
-                    <div class="card" style="width:">
+                    <div class="card">
                         <img src="{{ $especie->firstMedia('foto')->getUrl() }}" class="card-image-top">
                         <div class="card-body">
                             <h2 class="card-title col-md-6">{{ $especie->nome }}</h2>
