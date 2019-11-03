@@ -14,9 +14,10 @@
                     </div>
                 @endif
                 @foreach($especies as $especie)
-                    <div class="card">
-                        <a href="{{ url('/adotar/'. $especie->id)}}"> <div  class="card-header">{{$especie->nome}}</div> </a>
+                    <div class="card" style="width:">
+                        <img src="{{ $especie->firstMedia('foto')->getUrl() }}" class="card-image-top">
                         <div class="card-body">
+                            <h2 class="card-title col-md-6">{{ $especie->nome }}</h2>
                             <div class="col-md-6">
                                 <h4> Info </h4>
                                 <p> {{ $especie->descricao }} </p>

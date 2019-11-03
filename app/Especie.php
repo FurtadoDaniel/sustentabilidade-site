@@ -6,9 +6,12 @@ use App\Enums\EspecieTypeEnum;
 use App\Enums\IucnRedListEnum;
 use Illuminate\Database\Eloquent\Model;
 use MadWeb\Enum\EnumCastable;
+use Plank\Mediable\Mediable;
+
 class Especie extends Model
 {
     use EnumCastable;
+    use Mediable;
 
     protected $casts = [
         'tipo' => EspecieTypeEnum::class,
@@ -17,6 +20,15 @@ class Especie extends Model
     protected $guarded = [
         'id', 'created_at', 'updated_at'
     ];
+    
+    protected $midias = [
+        'foto', 'video'
+    ];
+
+    public function getMidias()
+    {
+        return $this->midias;
+    }
     
     public function scopeDoTipo($query, $tipo)
     {

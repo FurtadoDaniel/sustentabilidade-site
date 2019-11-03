@@ -11,6 +11,23 @@
 |
 */
 
+/**
+ * As operações podem ser:
+ * - 'attach', adiciona uma midia ao referido model
+ * - 'detach', remove uma midia ou um array de midias do model,
+ * - 'sync', remove todas as midias que nao estao no array e adicona as que estao.
+ * 
+ * Mais informações, me pergunte ou veja a documentação:
+ * https://laravel-mediable.readthedocs.io/en/latest/mediable.html#handling-media
+ * 
+ * @author Joao Gabriel C. Melo <joaomelo.contato@outlook.com>
+ */
+Route::match(
+    ['post', 'patch'],
+    '/{model}/{id}/midias/{operacao}',
+    ['uses' => 'ManipularMidias', 'as' => 'midia']
+);
+
 Route::get('/', function () {
     return view('welcome');
 });
