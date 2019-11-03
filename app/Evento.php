@@ -4,13 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use MadWeb\Enum\EnumCastable;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Evento extends Model implements HasMedia
+class Evento extends Model
 {
     use EnumCastable;
-    use HasMediaTrait;
 
     protected $guarded = [
         'id', 'created_at', 'updated_at'

@@ -17,17 +17,6 @@
       0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     ),
   ),
-  'intervention/image' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Intervention\\Image\\ImageServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Image' => 'Intervention\\Image\\Facades\\Image',
-    ),
-  ),
   'laravel/tinker' => 
   array (
     'providers' => 
@@ -63,11 +52,15 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
-  'spatie/laravel-medialibrary' => 
+  'plank/laravel-mediable' => 
   array (
     'providers' => 
     array (
-      0 => 'Spatie\\MediaLibrary\\MediaLibraryServiceProvider',
+      0 => 'Plank\\Mediable\\MediableServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'MediaUploader' => 'Plank\\Mediable\\MediaUploaderFacade',
     ),
   ),
 );
