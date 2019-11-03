@@ -36,4 +36,45 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function adocoes()
+    {
+        return $this->belongsToMany(Especie::class);
+    }
+
+    public function animais()
+    {
+        return $this->belongsToMany(Especie::class)->doTipo('animal');
+    }
+    
+    public function plantas()
+    {
+        return $this->belongsToMany(Especie::class)->doTipo('planta');
+    }
+
+    public function eventos()
+    {
+        return $this->hasMany(Evento::class);
+    }
+
+    public function confirmacoes()
+    {
+        return $this->belongsToMany(Evento::class)->as('confirmacao');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function transacoes()
+    {
+        return $this->hasMany(Transacao::class);
+    }
+
+    public function produtos()
+    {
+        return $this->hasMany(Produto::class);
+    }
+
 }

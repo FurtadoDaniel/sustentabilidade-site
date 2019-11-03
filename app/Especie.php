@@ -34,6 +34,6 @@ class Especie extends Model implements HasMedia
     
     public function users()
     {
-        return $this->hasMany(User::class, ['animal_id', 'arvore_id'], 'id');
+        return $this->belongsToMany(User::class);
     }
 }

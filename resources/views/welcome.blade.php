@@ -77,7 +77,7 @@
                     <a href="/abaixo-assinados">Abaixo Assinados</a>
                     <a href="/compras">Compras</a>
                     <a href="/especies/animal">Animais</a>
-                    <a href="/especies/arvore">Árvores</a>
+                    <a href="/especies/planta">Plantas</a>
                 </div>
             </div>
         </div>
