@@ -4,6 +4,12 @@
         <div class="row justify-content-center">
 
             <div class="col-md-8">
+
+                <form method="GET" action="{{  route('novoEvento')  }}">
+                <button type="submit" class="btn btn-success">
+                    {{ __('Novo') }}
+                </button>
+                </form>
                 <div class="card">
                     <div class="card-header">{{ __('Pesqusiar') }}</div>
 

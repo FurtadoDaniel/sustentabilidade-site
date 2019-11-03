@@ -5,73 +5,62 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Cadastro') }}</div>
+                <div class="card-header">{{ __('Evento') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ url('/eventos') }}">
                         @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                        <div class="form-group row" >
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') inválido @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="id" type="text" class="form-control " name="id"  style="display: none">
                             </div>
                         </div>
-                        
-                        <div class="form-group row">
-                            <label for="cpf" class="col-md-4 col-form-label text-md-right">{{ __('CPF') }}</label>
-
+                        <div class="form-group row" >
                             <div class="col-md-6">
-                                <input id="cpf" type="text" class="form-control @error('cpf') inválido @enderror" name="cpf" value="{{ old('cpf') }}" required autocomplete="cpf" autofocus>
-
-                                @error('cpf')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="user_id" type="text" class="form-control " name="user_id" value="{{Auth::id()}}" style="display: none">
                             </div>
                         </div>
-
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Título') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') inválido @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="titulo" type="text" class="form-control " name="titulo" >
                             </div>
                         </div>
-
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Senha') }}</label>
-
+                            <label for="tipo_acao" class="col-md-4 col-form-label text-md-right">{{ __('Tipo Ação') }}</label>
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') inválida @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <select id="tipo" type="text" class="form-control " name="tipo">
+                                    <option value="passeata">Passeata</option>
+                                    <option value="comunitaria">Atividade Comunitária</option>
+                                    <option value="seminario">Seminário</option>
+                                    <option value="workshop">Workshop</option>
+                                </select>
                             </div>
                         </div>
-
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirme a Senha') }}</label>
-
+                            <label for="cidade" class="col-md-4 col-form-label text-md-right">{{ __('Cidade') }}</label>
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="local" type="text" class="form-control " name="local" >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="data" class="col-md-4 col-form-label text-md-right">{{ __('Início') }}</label>
+                            <div class="col-md-6">
+                                <input id="inicio" type="date" class="form-control " name="inicio">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="data" class="col-md-4 col-form-label text-md-right">{{ __('Fim') }}</label>
+                            <div class="col-md-6">
+                                <input id="fim" type="date" class="form-control " name="fim">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="cidade" class="col-md-4 col-form-label text-md-right">{{ __('Descrição') }}</label>
+                            <div class="col-md-6">
+                                <input id="local" type="text" class="form-control " name="local" >
                             </div>
                         </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\AbaixoAssinado;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class AbaixoAssinadoController extends Controller
@@ -14,7 +15,7 @@ class AbaixoAssinadoController extends Controller
      */
     public function index()
     {
-        //
+        return view('index.assinados',['abaixos' => AbaixoAssinado::all()]);
     }
 
     /**
@@ -35,7 +36,13 @@ class AbaixoAssinadoController extends Controller
      */
     public function store(Request $request)
     {
-        (new AbaixoAssinado($request->all()))->save();
+        $assinado = new AbaixoAssinado;
+        $assinado->titulo = $request->titulo;
+        $assinado->fim = $request->fim;
+        $assinado->meta = $request->meta;
+        $assinado->descricao = $request->descricao;
+        $assinado->user_id = Auth::id();
+        $assinado->save();
         return back();
     }
 

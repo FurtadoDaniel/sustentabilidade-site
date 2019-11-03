@@ -28,7 +28,7 @@ class EventoController extends Controller
         });
 
         $eventos_array = array_filter($eventos_array, function($obj) use ($data){
-            if ($data > $obj->inicio and $data < $obj->fim) return false;
+            if ($data >= $obj->inicio and $data <= $obj->fim) return false;
             return true;
         });
 

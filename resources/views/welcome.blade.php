@@ -74,7 +74,7 @@
                     <a href="/especies">Espécies</a>
                     <a href="/eventos">Eventos</a>
                     <a href="{{ route('register') }}">Afiliação</a>
-                    <a href="/assinados">Abaixo Assinados</a>
+                    <a href="/abaixo-assinados">Abaixo Assinados</a>
                     <a href="/compras">Compras</a>
                     <a href="/especies/animal">Animais</a>
                     <a href="/especies/arvore">Árvores</a>

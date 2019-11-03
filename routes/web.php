@@ -39,6 +39,10 @@ Route::get('/adotar/{especie}', 'EspecieController@show')->name('adotar')->middl
 Route::view('/sucesso', 'sucesso')->name('Sucesso');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/eventos_pesquisar', 'EventoController@pesquisar')->name('pesquisar');
+Route::view('/evento', 'Forms.evento')->name('novoEvento')->middleware('auth');
+Route::view('/criar_abaixo', 'Forms.abaixo_assinado')->name('novoabaixo')->middleware('auth');
+Route::post('/assinar', 'AssinaturasController@create')->middleware('auth');
+
 
 
 Auth::routes();
