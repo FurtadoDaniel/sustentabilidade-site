@@ -42,7 +42,9 @@ Route::post('/eventos_pesquisar', 'EventoController@pesquisar')->name('pesquisar
 Route::view('/evento', 'Forms.evento')->name('novoEvento')->middleware('auth');
 Route::view('/criar_abaixo', 'Forms.abaixo_assinado')->name('novoabaixo')->middleware('auth');
 Route::post('/assinar', 'AssinaturasController@create')->middleware('auth');
-
-
+Route::view('/criar_produto', 'Forms.produto')->name('novo_produto')->middleware('auth');
+Route::get('/carrinho', 'CarrinhoController@index')->middleware('auth');
+Route::post('/carrinho', 'CarrinhoController@store')->name('add_car')->middleware('auth');
+Route::delete('/carrinho', 'CarrinhoController@limpar')->middleware('auth');
 
 Auth::routes();

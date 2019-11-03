@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ProdutoResource;
 use App\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProdutoController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +17,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        return Produto::all();
+        return view('index.compras',['produtos' => Produto::all()]);
     }
 
     /**
@@ -26,7 +28,26 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $hash = md5(uniqid(rand(),true));
+        if($request->hasFile('file')){
+
+            $file = $request->file->storeAs('produtos',$hash.'.jpg');
+            if($file){
+                $produto = new Produto();
+                $produto->nome = $request->nome;
+                $produto->preco = $request->preco;
+                $produto->descricao = $request->descricao;
+                $produto->foto = $hash.'.jpg';
+                $produto->tamanho = $request->tamanho;
+                $produto->cor = $request->cor;
+                $produto->user_id = Auth::id();
+                $produto->save();
+
+            }
+        }
+
+        return back();
+
     }
 
     /**
