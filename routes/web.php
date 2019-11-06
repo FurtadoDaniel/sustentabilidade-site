@@ -16,10 +16,10 @@
  * - 'attach', adiciona uma midia ao referido model
  * - 'detach', remove uma midia ou um array de midias do model,
  * - 'sync', remove todas as midias que nao estao no array e adicona as que estao.
- * 
+ *
  * Mais informações, me pergunte ou veja a documentação:
  * https://laravel-mediable.readthedocs.io/en/latest/mediable.html#handling-media
- * 
+ *
  * @author Joao Gabriel C. Melo <joaomelo.contato@outlook.com>
  */
 Route::match(
@@ -62,6 +62,7 @@ Route::post('/assinar', 'AssinaturasController@create')->middleware('auth');
 Route::view('/criar_produto', 'Forms.produto')->name('novo_produto')->middleware('auth');
 Route::get('/carrinho', 'CarrinhoController@index')->middleware('auth');
 Route::post('/carrinho', 'CarrinhoController@store')->name('add_car')->middleware('auth');
-Route::delete('/carrinho', 'CarrinhoController@limpar')->middleware('auth');
+Route::post('/carrinho/delete/{item}', 'CarrinhoController@remover')->name('retirar_carrinho')->middleware('auth');
+Route::post('/carrinho/comprar', 'CarrinhoController@comprar')->name('comprar_carrinho')->middleware('auth');
 
 Auth::routes();

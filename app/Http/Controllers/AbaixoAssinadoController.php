@@ -43,7 +43,7 @@ class AbaixoAssinadoController extends Controller
         $assinado->descricao = $request->descricao;
         $assinado->user_id = Auth::id();
         $assinado->save();
-        return back();
+        return redirect('/abaixo-assinados');
     }
 
     /**

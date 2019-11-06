@@ -31,10 +31,25 @@ class CarrinhoController extends Controller
         return redirect('/carrinho');
     }
 
-    public function limpar(Request $request)
+    public function remover(Request $request, string $id)
     {
-        $request->session()->flush();
-        return redirect('/produtos');
+        $items = $request->session()->pull('carrinho',[]);
+        foreach ($items as $item => $value){
+            if($items[$item]['id'] == $id){
+                unset($items[$item]);
+            }
+        }
+        foreach ($items as $item ){
+            $request->session()->push('carrinho', ['id' => $item['id'], 'produto' => $item['produto'],'qtd' =>  $item['qtd'],'valor' =>  $item['valor']]);
+        }
+
+        return redirect('/carrinho');
+    }
+
+    public function comprar(Request $request)
+    {
+        $request->session()->pull('carrinho',[]);
+        return redirect('/sucesso');
     }
 
 }

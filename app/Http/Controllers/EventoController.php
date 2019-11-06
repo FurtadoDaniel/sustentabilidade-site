@@ -20,31 +20,34 @@ class EventoController extends Controller
         $data = strtotime ($request->input('data'));
         $tipo_acao = $request->input('tipo_acao');
 
-        $eventos_array = array_filter($eventos->all(), function($obj) use ($cidade){
-            if (isset($obj->local)) {
-                if (strpos($obj->local, $cidade) === false ) return false;
-            }
-            return true;
-        });
+        $eventos_array = Evento::all()->toArray();
 
-        $eventos_array = array_filter($eventos_array, function($obj) use ($data){
-            if ($data >= $obj->inicio and $data <= $obj->fim) return false;
-            return true;
-        });
+        if(isset($cidade) and $cidade != ''){
+            $eventos_array = array_filter($eventos_array, function($obj) use ($cidade){
+                if (strpos($obj['local'], $cidade) === false ) return false;
+                return true;
+            });
+        }
 
-        $eventos_array = array_filter($eventos_array, function($obj) use ($tipo_acao){
-            if (isset($obj->tipo)) {
-                if (strpos($obj->tipo, $tipo_acao) === false ) return false;
-            }
-            return true;
-        });
+        if(isset($data) and $data != ''){
+            $eventos_array = array_filter($eventos_array, function($obj) use ($data){
+                if ($data >= strtotime($obj['inicio']) and $data <= strtotime($obj['fim'])) return false;
+                return true;
+            });
+        }
 
+        if(isset($tipo_acao) and $tipo_acao != ''){
+            $eventos_array = array_filter($eventos_array, function($obj) use ($tipo_acao){
+                    if (strpos($obj['tipo'], $tipo_acao) === false ) return false;
+                return true;
+            });
+        }
         return view('index.eventos',['eventos' => $eventos_array]);
     }
 
     public function index()
     {
-        return view('index.eventos',['eventos' => Evento::all()]);
+        return view('index.eventos',['eventos' => Evento::all()->toArray()]);
     }
 
     /**
@@ -57,7 +60,7 @@ class EventoController extends Controller
     {
         $evento = new Evento($request->all());
         $evento->save();
-        return $evento;
+        return view('index.eventos',['eventos' => Evento::all()]);
     }
 
     /**
