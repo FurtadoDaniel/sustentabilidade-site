@@ -5,9 +5,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Sustentabilidade</title>
-
+        <script type="text/javascript" src="/js/lib/dummy.js"></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link href="css/freelancer.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+        <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+        <style id="compiled-css" type="text/css">
+
+        </style>
+
 
         <!-- Styles -->
         <style>
@@ -81,5 +93,99 @@
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <form method="GET" action="{{  url('/')  }}">
+                        <input name="texto" class="form-control col-md-12" type="text" placeholder="Search"
+                               aria-label="Search">
+                    </form>
+                </div>
+
+                <div class="col-md-12">
+
+
+                    <!-- Page Heading -->
+                    <h1 class="my-4">Notícias
+                    </h1>
+
+                    @foreach($noticias as $noticia)
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>{{$noticia['titulo']}}</h3>
+                            <p>{{$noticia['texto']}}</p>
+                        </div>
+                    </div>
+
+                                <hr>
+                    <!-- /.row -->
+                    @endforeach
+
+                </div>
+                <div class="col-md-12">
+
+
+                    <!-- Page Heading -->
+                    <h1 class="my-4">Videos
+                    </h1>
+
+                    @foreach($videos as $video)
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3>{{$video['titulo']}}</h3>
+                                <iframe width="420" height="315"
+                                        src="{{$video['url']}}">
+                                </iframe>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <!-- /.row -->
+                    @endforeach
+
+                </div>
+                <div class="col-md-12">
+
+
+                    <!-- Page Heading -->
+                    <h1 class="my-4">Eventos
+                    </h1>
+
+                    @foreach($eventos as $evento)
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3>{{$evento['titulo']}}</h3>
+                                <p>{{$evento['descricao']}}</p>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <!-- /.row -->
+                    @endforeach
+
+                </div>
+                <div class="col-md-12">
+
+
+                    <!-- Page Heading -->
+                    <h1 class="my-4">Depoimentos
+                    </h1>
+
+                    @foreach($depoimentos as $depoimento)
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3>{{$depoimento['titulo']}}</h3>
+                                <p>{{$depoimento['texto']}}</p>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <!-- /.row -->
+                    @endforeach
+
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
     </body>
 </html>

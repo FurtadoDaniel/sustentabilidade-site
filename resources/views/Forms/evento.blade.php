@@ -58,9 +58,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="cidade" class="col-md-4 col-form-label text-md-right">{{ __('Descrição') }}</label>
+                            <label for="descricao" class="col-md-4 col-form-label text-md-right">{{ __('Descrição') }}</label>
                             <div class="col-md-6">
-                                <input id="local" type="text" class="form-control " name="local" >
+                                <input id="descricao" type="text" class="form-control " name="descricao" >
                             </div>
                         </div>
 
