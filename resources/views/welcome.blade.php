@@ -187,5 +187,29 @@
             </div>
         </div>
         <!-- /.container -->
+        <footer class="footer text-center">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Footer Location -->
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Contatos</h4>
+                        <p class="lead mb-0">contato@contato.com.br</p>
+                    </div>
+
+                    <!-- Footer Social Icons -->
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Patrocinadores</h4>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#">
+                            <img src="http://www.uff.br/sites/default/files/imagens-das-paginas/logo-uff-branco-site_0.png" alt="Smiley face">
+                        </a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#">
+                            <img src="http://www.ic.uff.br/~simone/orgcomp/Ic_uff.jpg" alt="Smiley face">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
     </body>
 </html>
