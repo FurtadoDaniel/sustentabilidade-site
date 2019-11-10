@@ -59,27 +59,23 @@
             <div class="col-md-8">
                 @foreach($eventos as $evento)
                     <div class="card">
-                        <div class="card-header">{{$evento['titulo']}}</div>
+                        <div class="card-header">{{ $evento->titulo }}</div>
                         <div class="card-body">
                             <div class="col-md-6">
                                 <h4> Data Início</h4>
-                                <p> {{ $evento['inicio'] }} </p>
+                                <p> {{ $evento->inicio }} </p>
                             </div>
                             <div class="col-md-6">
                                 <h4> Data Fim</h4>
-                                <p> {{ $evento['fim'] }} </p>
-                            </div>
-                            <div class="col-md-6">
-                                <h4> Tipo </h4>
-                                <p> {{ $evento['tipo'] }} </p>
+                                <p> {{ $evento->fim }} </p>
                             </div>
                             <div class="col-md-6">
                                 <h4> Local </h4>
-                                <p> {{ $evento['local'] }} </p>
+                                <p> {{ $evento->local }} </p>
                             </div>
                             <div class="col-md-6">
                                 <h4> </h4>
-                                <p> {{ $evento['descricao'] }} </p>
+                                <p> {{ $evento->descricao }} </p>
                             </div>
                         </div>
                     </div>

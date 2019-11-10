@@ -20,7 +20,6 @@ class CreateEventosTable extends Migration
 			$table->string('descricao')->nullable();
 			$table->date('inicio')->nullable(false);
 			$table->date('fim')->nullable();
-            $table->string('tipo')->nullable();
 			$table->unsignedBigInteger('user_id');
 			$table->foreign('user_id')->references('id')->on('users');
 

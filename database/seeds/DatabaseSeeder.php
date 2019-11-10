@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
 
         factory(Especie::class, 10)->create()->each(function ($especie) {
             $especie->attachMedia(MediaUploaderFacade::fromSource(
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Siberischer_tiger_de_edit02.jpg/252px-Siberischer_tiger_de_edit02.jpg'
+                'https://cdn.vidanimal.com.br/wp-content/uploads/aves-de-rapina2.jpg'
             )->upload(), 'foto');
         });
     }

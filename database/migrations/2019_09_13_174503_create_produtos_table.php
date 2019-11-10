@@ -20,9 +20,6 @@ class CreateProdutosTable extends Migration
 			$table->string('nome',30)->nullable(false);
 			$table->double('preco', 10, 2)->nullable();
 			$table->string('descricao')->nullable();
-            $table->string('foto')->nullable();
-            $table->string('tamanho')->nullable();
-            $table->string('cor')->nullable();
             $table->enum('tipo', ProductTypeEnum::values())->default(ProductTypeEnum::__default);
 			$table->unsignedBigInteger('user_id');
 			$table->foreign('user_id')->references('id')->on('users');

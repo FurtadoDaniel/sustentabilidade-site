@@ -2,33 +2,52 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <form method="GET" action="{{  url('/produtos')  }}">
-                    <button type="submit" class="btn btn-success">
-                        {{ __('Continuar comprando') }}
-                    </button>
-                </form>
-
-                    <div class="card">
-                        <div  class="card-header">Carrinho</div>
-
-                        <div class="card-body">
-                            @foreach($carrinho as $item)
-                            <div class="col-md-6">
-                                <p>{{ $item['qtd'] }}x {{ $item['produto'] }} Valor R$:{{ $item['valor'] }}</p>
-
-                                <form method="post" action="{{route('retirar_carrinho', $item['id'])}}">
-                                    @csrf
-                                    <button type="submit" class="btn btn-danger">
-                                        {{ __('Remover') }}
-                                    </button>
-                                </form>
-                            </div>
-                            @endforeach
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Qtd</th>
+                                    <th scope="col">Produto</th>
+                                    <th scope="col">Valor</th>
+                                    <th scope="col">Soma</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($carrinho as $item)
+                                    <tr>
+                                        <td>{{ $item['qtd'] }}</td>
+                                        <td>{{ $item['produto'] }}</td>
+                                        <td>R$ {{ $item['valor'] }}</td>
+                                        <td>R$ {{ $item['valor'] * $item['qtd'] }}</td>
+                                        <td><form method="post" action="{{route('retirar_carrinho', $item['id'])}}">
+                                            @csrf
+                                            <button type="submit" class="btn btn-link" style='color:red'>
+                                                {{ __('Remover') }}
+                                            </button>
+                                        </form></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div class="col-md-6 offset-md-6 text-right">
+                            <h5 class="card-text"><b>Total:</b> R$ {{ $total }}</h5>
                         </div>
-
                     </div>
-
+                    <div class="card-footer">
+                        <form method="post" action="{{ route('comprar_carrinho') }}">
+                            @csrf
+                            <a href="{{ route('produtos.index') }}" type="submit" class="btn btn-lg btn-success">
+                                {{ __('Continuar comprando') }}
+                            </a>
+                            <button type="submit" class="btn btn-lg btn-danger float-md-right">
+                                Confirmar Pagamento
+                            </button>
+                        </form>
+                    </div>
+                </div>
                 <form method="POST" action="{{ route('comprar_carrinho') }}">
                     @csrf
                     <div class="form-group row">
@@ -41,7 +60,7 @@
                     <div class="form-group row">
                         <label for="cartao" class="col-md-4 col-form-label text-md-right">{{ __('Cartão') }}</label>
                         <div class="col-md-6">
-                            <input id="cartao" type="text" class="form-control @error('cartao') inválido @enderror" name="cartao"  >
+                            <input id="cartao" type="text" class="form-control @error('cartao') is-invalid @enderror" name="cartao"  >
                             @error('cartao')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ "Cartão Inválido" }}</strong>
@@ -62,7 +81,7 @@
                     <div class="form-group row">
                         <label for="codigo" class="col-md-4 col-form-label text-md-right">{{ __('CSV') }}</label>
                         <div class="col-md-6">
-                            <input id="codigo" type="text" class="form-control @error('codigo') inválido @enderror" name="codigo"  >
+                            <input id="codigo" type="text" class="form-control @error('codigo') is-invalid @enderror" name="codigo"  >
                             @error('codigo')
                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ "Código Inválido" }}</strong>

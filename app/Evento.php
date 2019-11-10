@@ -8,7 +8,6 @@ use Plank\Mediable\Mediable;
 
 class Evento extends Model
 {
-    use EnumCastable;
     use Mediable;
 
     protected $guarded = [

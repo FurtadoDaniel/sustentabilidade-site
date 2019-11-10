@@ -10,18 +10,13 @@
                 </form>
                 @foreach($produtos as $produto)
                     <div class="card">
-                        <div  class="card-header">{{$produto->nome}}</div>
+                        <img src="{{ $produto->firstMedia('foto')->getUrl() }}" class="card-image-top">
                         <div class="card-body">
+                        <h2 class="card-title col-md-6">{{ $produto->nome }}</h2>
                             <div class="col-md-6">
                                 <h4> Descrição </h4>
                                 <p> {{ $produto->descricao }} </p>
-                                <img src="{{ asset("produtos/{$produto->foto}") }}">
-                                <h4> Tamanho </h4>
-                                <p> {{ $produto->tamanho }} </p>
-                                <h4> Cor </h4>
-                                <p> {{ $produto->cor }} </p>
-                                <h4> Valor (R$)</h4>
-                                <p> {{ $produto->preco }} </p>
+                                <h5> R$ {{ $produto->preco }}</h4>
                             </div>
                         </div>
                         <div class="card-body">

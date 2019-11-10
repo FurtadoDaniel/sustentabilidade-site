@@ -10,7 +10,6 @@ class CarrinhoController extends Controller
     public function index(Request $request)
     {
         $carrinho = $request->session()->get('carrinho');
-
         $total = 0;
         foreach ($carrinho as $entrada){
             $total = $total + $entrada['valor'];

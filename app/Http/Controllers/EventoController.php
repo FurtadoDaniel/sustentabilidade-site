@@ -47,7 +47,7 @@ class EventoController extends Controller
 
     public function index()
     {
-        return view('index.eventos',['eventos' => Evento::all()->toArray()]);
+        return view('index.eventos', ['eventos' => Evento::all()]);
     }
 
     /**
