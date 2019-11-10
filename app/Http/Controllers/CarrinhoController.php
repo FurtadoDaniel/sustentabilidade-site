@@ -9,6 +9,7 @@ class CarrinhoController extends Controller
 {
     public function index(Request $request)
     {
+        if (!session()->has('carrinho')) return redirect()->route('produtos.index');
         $carrinho = $request->session()->get('carrinho');
         $total = 0;
         foreach ($carrinho as $entrada){
@@ -43,6 +44,16 @@ class CarrinhoController extends Controller
         }
 
         return redirect('/carrinho');
+    }
+
+    public function pagar(Request $request)
+    {
+        $carrinho = $request->session()->get('carrinho');
+        $total = 0;
+        foreach ($carrinho as $entrada){
+            $total = $total + $entrada['valor'];
+        }
+        return view('Forms.pagamento')->with('total', $total);
     }
 
     public function comprar(Request $request)

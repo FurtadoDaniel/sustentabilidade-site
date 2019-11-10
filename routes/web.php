@@ -96,5 +96,5 @@ Route::get('/carrinho', 'CarrinhoController@index')->middleware('auth');
 Route::post('/carrinho', 'CarrinhoController@store')->name('add_car')->middleware('auth');
 Route::post('/carrinho/delete/{item}', 'CarrinhoController@remover')->name('retirar_carrinho')->middleware('auth');
 Route::post('/carrinho/comprar', 'CarrinhoController@comprar')->name('comprar_carrinho')->middleware('auth');
-
+Route::get('/carrinho/confirmacao', 'CarrinhoController@pagar')->name('confirmar_pagamento')->middleware('auth');
 Auth::routes();
