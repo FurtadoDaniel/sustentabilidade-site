@@ -108,7 +108,7 @@
                     <!-- Page Heading -->
                     <h1 class="my-4">Notícias
                     </h1>
-
+                    @if(isset($noticias))
                     @foreach($noticias as $noticia)
                     <div class="row">
                         <div class="col-md-12">
@@ -120,6 +120,7 @@
                                 <hr>
                     <!-- /.row -->
                     @endforeach
+                    @endif
 
                 </div>
                 <div class="col-md-12">
@@ -128,7 +129,7 @@
                     <!-- Page Heading -->
                     <h1 class="my-4">Videos
                     </h1>
-
+                    @if(isset($videos))
                     @foreach($videos as $video)
                         <div class="row">
                             <div class="col-md-12">
@@ -142,6 +143,7 @@
                         <hr>
                         <!-- /.row -->
                     @endforeach
+                    @endif
 
                 </div>
                 <div class="col-md-12">
@@ -150,7 +152,7 @@
                     <!-- Page Heading -->
                     <h1 class="my-4">Eventos
                     </h1>
-
+                    @if (isset($eventos))
                     @foreach($eventos as $evento)
                         <div class="row">
                             <div class="col-md-12">
@@ -162,6 +164,7 @@
                         <hr>
                         <!-- /.row -->
                     @endforeach
+                    @endif
 
                 </div>
                 <div class="col-md-12">
@@ -170,7 +173,7 @@
                     <!-- Page Heading -->
                     <h1 class="my-4">Depoimentos
                     </h1>
-
+                    @if(isset($depoimentos))
                     @foreach($depoimentos as $depoimento)
                         <div class="row">
                             <div class="col-md-12">
@@ -182,6 +185,7 @@
                         <hr>
                         <!-- /.row -->
                     @endforeach
+                    @endif
 
                 </div>
             </div>
