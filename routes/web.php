@@ -38,7 +38,7 @@ Route::get('/', function (Request $request) {
         'texto' => 'blablabla']];
     $vidoes =  [['titulo' => '1 video',
         'url' => 'https://www.youtube.com/embed/O3rpmctmC_M']];
-    $eventos = Evento::all()->toArray();
+    $eventos = Evento::all()->toArray() ?? null;
     $depoimentos = [['titulo' => '1 depo',
         'texto' => 'blablabla']];
 
