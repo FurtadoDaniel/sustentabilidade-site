@@ -2,10 +2,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Anexo;
 use App\Evento;
 use Faker\Generator as Faker;
-use Illuminate\Support\Carbon;
 
 $factory->define(Evento::class, function (Faker $faker) {
     return [

@@ -30,7 +30,7 @@ Route::match(
     '/{model}/{id}/midias/{operacao}',
     ['uses' => 'ManipularMidias', 'as' => 'midia']
 );
-
+/*
 Route::get('/', function (Request $request) {
 
     $filtro =$request->input('texto');
@@ -61,6 +61,10 @@ Route::get('/', function (Request $request) {
         });
     }
     return view('welcome',['noticias'=>$noticias,'videos'=>$vidoes,'eventos'=>$eventos,'depoimentos'=>$depoimentos]);
+});
+*/
+Route::get('/', function () {
+    return view('welcome');
 });
 
 
