@@ -23,6 +23,26 @@ class Post extends Model
         'foto', 'video'
     ];
 
+    public function scopeDoTipo($query, $tipo)
+    {
+        return $query->where('tipo', 'like', $tipo);
+    }
+
+    public function scopeNoticia($query)
+    {
+        return $query->doTipo(PostTypeEnum::NEWS);
+    }
+
+    public function scopeDepoimento($query)
+    {
+        return $query->doTipo(PostTypeEnum::DEPO);
+    }
+
+    public function scopeArtigo($query)
+    {
+        return $query->doTipo(PostTypeEnum::ARTI);
+    }
+
     public function getMidias()
     {
         return $this->midias;

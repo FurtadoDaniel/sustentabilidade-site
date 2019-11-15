@@ -109,7 +109,7 @@
                     <h1 class="my-4">Notícias
                     </h1>
 
-                    @foreach($noticias as $noticia)
+                    @foreach($noticias ?? '' as $noticia)
                     <div class="row">
                         <div class="col-md-12">
                             <h3>{{$noticia['titulo']}}</h3>
