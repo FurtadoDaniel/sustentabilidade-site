@@ -35,7 +35,10 @@ Route::match(
 
 
 Route::get('/', 'ShowWelcome');
-
+Route::get('/search', [
+    'uses'  =>  'Search',
+    'as'    =>  'search'
+]);
 
 Route::get('/especies/{tipo}', [
     'uses'  =>  'EspecieController@index',

@@ -254,7 +254,7 @@
         'driver' => 'pgsql',
         'url' => NULL,
         'host' => 'localhost',
-        'port' => '3306',
+        'port' => '5432',
         'database' => 'sustentabilidade',
         'username' => 'root',
         'password' => 'root',
@@ -269,7 +269,7 @@
         'driver' => 'sqlsrv',
         'url' => NULL,
         'host' => 'localhost',
-        'port' => '3306',
+        'port' => '1433',
         'database' => 'sustentabilidade',
         'username' => 'root',
         'password' => 'root',
@@ -426,16 +426,16 @@
   'mail' => 
   array (
     'driver' => 'smtp',
-    'host' => 'smtp.mailtrap.io',
-    'port' => '2525',
+    'host' => 'smtp.gmail.com',
+    'port' => '587',
     'from' => 
     array (
       'address' => 'hello@example.com',
       'name' => 'Example',
     ),
-    'encryption' => NULL,
-    'username' => NULL,
-    'password' => NULL,
+    'encryption' => 'tls',
+    'username' => 'mail.sustentabilidade@gmail.com',
+    'password' => 'xgxeaeztvyhrcoyx',
     'sendmail' => '/usr/sbin/sendmail -bs',
     'markdown' => 
     array (

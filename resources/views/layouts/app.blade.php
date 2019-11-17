@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar sticky-top navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Sustentabilidade
@@ -35,7 +35,10 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-
+                    <form class="form-inline" action="{{ route('search') }}">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="search">
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Pesquisar</button>
+                    </form>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -80,6 +83,30 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer class="footer text-center">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Footer Location -->
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Contatos</h4>
+                        <p class="lead mb-0">contato@contato.com.br</p>
+                    </div>
+
+                    <!-- Footer Social Icons -->
+                    <div class="col-lg-6 mb-5 mb-lg-0">
+                        <h4 class="text-uppercase mb-4">Patrocinadores</h4>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#">
+                            <img src="http://www.uff.br/sites/default/files/imagens-das-paginas/logo-uff-branco-site_0.png" alt="Smiley face">
+                        </a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="#">
+                            <img src="http://www.ic.uff.br/~simone/orgcomp/Ic_uff.jpg" alt="Smiley face">
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

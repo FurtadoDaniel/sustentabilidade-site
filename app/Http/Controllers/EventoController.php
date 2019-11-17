@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Evento;
-use App\Http\Resources\EventoResource;
+use App\Mail\NovoEvento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class EventoController extends Controller
 {
@@ -15,7 +16,6 @@ class EventoController extends Controller
      */
     public function pesquisar(Request $request)
     {
-        $eventos = Evento::all();
         $cidade =$request->input('cidade');
         $data = strtotime ($request->input('data'));
         $tipo_acao = $request->input('tipo_acao');
@@ -47,7 +47,12 @@ class EventoController extends Controller
 
     public function index()
     {
-        return view('index.eventos', ['eventos' => Evento::all()]);
+        $eventos = Evento::all();
+        $cidades = $eventos->pluck('cidade');
+        return view('index.eventos', [
+            'eventos' => $eventos,
+            'cidades' => $cidades
+        ]);
     }
 
     /**
