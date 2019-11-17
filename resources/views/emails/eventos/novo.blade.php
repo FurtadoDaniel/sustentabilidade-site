@@ -1,12 +1,14 @@
 @component('mail::message')
-# Introduction
+# Um novo evento!
 
-The body of your message.
+Olá, Auth::user()->name, um(a) novo(a) {{ $evento->tipo }} foi cadastrado(a).
 
-@component('mail::button', ['url' => ''])
-Button Text
+@component('mail::panel')
+### {{ $evento->titulo }} <div class="text-muted">{{ $evento->inicio }}</div>
+
+{{ $evento->descricao }}
 @endcomponent
 
-Thanks,<br>
+Atenciosamente,<br>
 {{ config('app.name') }}
 @endcomponent

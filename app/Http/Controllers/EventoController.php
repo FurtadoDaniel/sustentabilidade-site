@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Evento;
 use App\Mail\NovoEvento;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -65,6 +66,7 @@ class EventoController extends Controller
     {
         $evento = new Evento($request->all());
         $evento->save();
+        Mail::to(User::all())->send(new NovoEvento($evento));
         return view('index.eventos',['eventos' => Evento::all()]);
     }
 
