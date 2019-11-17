@@ -21,11 +21,9 @@
                                 <div class="col-md-6">
                                     <select id="tipo_acao" type="text" class="form-control " name="tipo_acao" >
                                         <option value="">Qualquer</option>
-                                        foreach(\App\Enums\TipoEventoEnum::values() as $tipo)
+                                        @foreach(\App\Enums\TipoEventoEnum::values() as $tipo)
                                         <option value="{{ $tipo }}">{{ ucfirst($tipo) }}</option>
-                                        <option value="{{ $tipo }}">{{ ucfirst($tipo) }}</option>
-                                        <option value="{{ $tipo }}">{{ ucfirst($tipo) }}</option>
-                                        <option value="{{ $tipo }}">{{ ucfirst($tipo) }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
