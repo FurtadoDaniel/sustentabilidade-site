@@ -14,7 +14,7 @@
                     <div class="card-header">{{ __('Pesqusiar') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('pesquisar') }}">
+                        <form method="GET" action="{{ route('eventos.pesquisar') }}">
                             @csrf
                             <div class="form-group row">
                                 <label for="tipo_acao" class="col-md-4 col-form-label text-md-right">{{ __('Tipo Ação') }}</label>

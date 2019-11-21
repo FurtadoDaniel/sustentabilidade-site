@@ -33,8 +33,8 @@ Route::match(
     ['uses' => 'ManipularMidias', 'as' => 'midia']
 );
 
-
 Route::get('/', 'ShowWelcome');
+
 Route::get('/search', [
     'uses'  =>  'Search',
     'as'    =>  'search'
@@ -43,6 +43,11 @@ Route::get('/search', [
 Route::get('/especies/{tipo}', [
     'uses'  =>  'EspecieController@index',
     'as'    =>  'especies.index'
+]);
+
+Route::get('eventos/pesquisar/', [
+    'uses'  =>  'EventoController@pesquisar',
+    'as'    =>  'eventos.pesquisar'
 ]);
 
 Route::resources([
