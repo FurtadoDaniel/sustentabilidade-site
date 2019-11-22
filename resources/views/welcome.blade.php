@@ -163,8 +163,8 @@
                     @foreach($noticias ?? '' as $noticia)
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>{{$noticia['titulo']}}</h3>
-                            <p>{{$noticia['texto']}}</p>
+                            <h3>{{ $noticia->titulo }}</h3>
+                            <p>{{ $noticia->conteudo }}</p>
                         </div>
                     </div>
 
@@ -205,7 +205,13 @@
                     @foreach($eventos as $evento)
                         <div class="row">
                             <div class="col-md-12">
-                                <h3>{{$evento['titulo']}}</h3>
+                                <h3>{{$evento->titulo}}</h3>
+                                <small class="text-muted"><em>
+                                    {{ $evento->inicio }}
+                                    @if(filled($evento->fim))
+                                        até {{ $evento->fim }}
+                                    @endif
+                                </em></small>
                                 <p>{{$evento['descricao']}}</p>
                             </div>
                         </div>
@@ -223,12 +229,11 @@
                     </h1>
 
                     @foreach($depoimentos as $depoimento)
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3>{{$depoimento['titulo']}}</h3>
-                                <p>{{$depoimento['texto']}}</p>
-                            </div>
-                        </div>
+                        <blockquote class="blockquote">
+                            <h4>{{ $depoimento->titulo }}</h4>
+                            <p class="mb-0">{{$depoimento->conteudo}}</p>
+                            <footer class="blockquote-footer text-right">{{ $depoimento->user->name }}</footer>
+                        </blockquote>
 
                         <hr>
                         <!-- /.row -->
