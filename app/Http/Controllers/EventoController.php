@@ -24,8 +24,10 @@ class EventoController extends Controller
         $resultado = Evento::when($tipo_acao, function ($query, $tipo_acao) {
             return $query->where('tipo', 'like', $tipo_acao);
         })->when($data, function ($query, $data) {
-            return $query->where($data, '<=', 'fim')
-                        ->orWhere('inicio', '=', $data);
+            return $query->where('inicio', '=', $data)
+                ->orWhere->where(function ($query) use ($data) {
+                    return $query->where('fim', '>=', $data);
+                });
         })->when($cidade, function ($query, $cidade) {
             return $query->where('local', 'like', $cidade);
         })->get();
