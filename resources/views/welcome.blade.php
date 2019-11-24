@@ -143,7 +143,6 @@
                 <div class="links">
                     <a href="/especies">Espécies</a>
                     <a href="/eventos">Eventos</a>
-                    <a href="{{ route('register') }}">Afiliação</a>
                     <a href="/abaixo-assinados">Abaixo Assinados</a>
                     <a href="/produtos">Compras</a>
                     <a href="/especies/animal">Animais</a>

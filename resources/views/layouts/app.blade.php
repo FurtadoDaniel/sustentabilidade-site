@@ -33,7 +33,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navDropdown">
+                                <a class="dropdown-item" href="/abaixo-assinados">Abaixo Assinados</a>
+                                <a class="dropdown-item" href="/especies/animal">Animais</a>
+                                <a class="dropdown-item" href="/especies">Espécies</a>
+                                <a class="dropdown-item" href="/eventos">Eventos</a>
+                                <a class="dropdown-item" href="/produtos">Loja</a>
+                                <a class="dropdown-item" href="/especies/planta">Plantas</a>
+                            </div>
+                        </li>
                     </ul>
                     <form class="form-inline" action="{{ route('search') }}">
                         <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="search">
