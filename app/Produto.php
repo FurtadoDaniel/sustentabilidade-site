@@ -34,9 +34,19 @@ class Produto extends Model implements Searchable
         );
     }
     
+    public function scopeDoTipo($query, $tipo)
+    {
+        return $query->where('tipo', 'like', $tipo);
+    }
+    
     public function getMidias()
     {
         return $this->midias;
+    }
+
+    public function especies()
+    {
+        return $this->hasMany(Especie::class);
     }
 
     public function user()

@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row justify-content-center">
 
-            <div class="col-md-8">
+            <div class="col-md-12">
 
                 <form method="GET" action="{{  route('novoEvento')  }}">
                 <button type="submit" class="btn btn-success">
@@ -54,30 +54,33 @@
                 </div>
             </div>
 
-            <div class="col-md-8">
-                @foreach($eventos as $evento)
-                    <div class="card">
-                        <div class="card-header">{{ $evento->titulo }}</div>
-                        <div class="card-body">
-                            <div class="col-md-6">
-                                <h4> Data Início</h4>
-                                <p> {{ $evento->inicio }} </p>
-                            </div>
-                            <div class="col-md-6">
-                                <h4> Data Fim</h4>
-                                <p> {{ $evento->fim }} </p>
-                            </div>
-                            <div class="col-md-6">
-                                <h4> Local </h4>
-                                <p> {{ $evento->local }} </p>
-                            </div>
-                            <div class="col-md-6">
-                                <h4> </h4>
-                                <p> {{ $evento->descricao }} </p>
+            <br />
+            <div class="card-deck">
+                <div class="col-md-12">
+                    @foreach($eventos as $evento)
+                        <div class="card">
+                            <div class="card-header">{{ $evento->titulo }}</div>
+                            <div class="card-body">
+                                <div class="col-md-6">
+                                    <h4> Data Início</h4>
+                                    <p> {{ $evento->inicio }} </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4> Data Fim</h4>
+                                    <p> {{ $evento->fim }} </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4> Local </h4>
+                                    <p> {{ $evento->local }} </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4> </h4>
+                                    <p> {{ $evento->descricao }} </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>

@@ -50,6 +50,11 @@ class Especie extends Model implements Searchable
         return $query->where('tipo', 'like', $tipo);
     }
 
+    public function produto()
+    {
+        return $this->belongsTo(Produto::class);
+    }
+    
     public function transacoes()
     {
         return $this->hasMany(Transacao::class);

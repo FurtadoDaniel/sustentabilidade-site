@@ -18,6 +18,8 @@ class AbaixoAssinado extends Model implements Searchable
         'foto', 'video'
     ];
 
+    protected $guarded = ['id'];
+
     public function getMidias()
     {
         return $this->midias;
@@ -30,6 +32,11 @@ class AbaixoAssinado extends Model implements Searchable
             $this->titulo,
             route('abaixo-assinados.show', $this)
         );
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function assinaturas(){

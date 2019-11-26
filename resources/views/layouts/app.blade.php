@@ -18,6 +18,16 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+    
+        .card-deck {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+            grid-gap: .5rem;
+        }
+
+    </style>
 </head>
 <body>
     <div id="app">

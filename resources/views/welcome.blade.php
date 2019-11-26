@@ -141,11 +141,11 @@
                 </div>
 
                 <div class="links">
+                    <a href="/abaixo-assinados">Abaixo Assinados</a>
+                    <a href="/especies/animal">Animais</a>
+                    <a href="/produtos">Loja</a>
                     <a href="/especies">Espécies</a>
                     <a href="/eventos">Eventos</a>
-                    <a href="/abaixo-assinados">Abaixo Assinados</a>
-                    <a href="/produtos">Compras</a>
-                    <a href="/especies/animal">Animais</a>
                     <a href="/especies/planta">Plantas</a>
                 </div>
             </div>
