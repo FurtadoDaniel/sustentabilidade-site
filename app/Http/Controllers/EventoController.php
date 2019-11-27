@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Evento;
-use App\Http\Resources\EventoResource;
+use App\Mail\NovoEvento;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class EventoController extends Controller
 {
@@ -15,39 +17,32 @@ class EventoController extends Controller
      */
     public function pesquisar(Request $request)
     {
-        $eventos = Evento::all();
-        $cidade =$request->input('cidade');
-        $data = strtotime ($request->input('data'));
-        $tipo_acao = $request->input('tipo_acao');
+        $cidade = '%' . $request->cidade . '%' ?? null;
+        $data = $request->data ?? null;
+        $tipo_acao = $request->tipo_acao ?? null;
 
-        $eventos_array = Evento::all()->toArray();
+        $resultado = Evento::when($tipo_acao, function ($query, $tipo_acao) {
+            return $query->where('tipo', 'like', $tipo_acao);
+        })->when($data, function ($query, $data) {
+            return $query->where('inicio', '=', $data)
+                ->orWhere->where(function ($query) use ($data) {
+                    return $query->where('fim', '>=', $data);
+                });
+        })->when($cidade, function ($query, $cidade) {
+            return $query->where('local', 'like', $cidade);
+        })->get();
 
-        if(isset($cidade) and $cidade != ''){
-            $eventos_array = array_filter($eventos_array, function($obj) use ($cidade){
-                if (strpos($obj['local'], $cidade) === false ) return false;
-                return true;
-            });
-        }
-
-        if(isset($data) and $data != ''){
-            $eventos_array = array_filter($eventos_array, function($obj) use ($data){
-                if ($data >= strtotime($obj['inicio']) and $data <= strtotime($obj['fim'])) return false;
-                return true;
-            });
-        }
-
-        if(isset($tipo_acao) and $tipo_acao != ''){
-            $eventos_array = array_filter($eventos_array, function($obj) use ($tipo_acao){
-                    if (strpos($obj['tipo'], $tipo_acao) === false ) return false;
-                return true;
-            });
-        }
-        return view('index.eventos',['eventos' => $eventos_array]);
+        return view('index.eventos', ['eventos' => $resultado]);
     }
 
     public function index()
     {
-        return view('index.eventos', ['eventos' => Evento::all()]);
+        $eventos = Evento::all();
+        $cidades = $eventos->pluck('cidade');
+        return view('index.eventos', [
+            'eventos' => $eventos,
+            'cidades' => $cidades
+        ]);
     }
 
     /**
@@ -60,6 +55,7 @@ class EventoController extends Controller
     {
         $evento = new Evento($request->all());
         $evento->save();
+        Mail::to(User::all())->send(new NovoEvento($evento));
         return view('index.eventos',['eventos' => Evento::all()]);
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\TipoEventoEnum;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -15,7 +16,8 @@ class CreateEventosTable extends Migration
     {
         Schema::create('eventos', function (Blueprint $table) {
             $table->bigIncrements('id');
-			$table->string('titulo',30)->nullable(false);
+            $table->string('titulo',30)->nullable(false);
+            $table->enum('tipo', TipoEventoEnum::values())->default(TipoEventoEnum::__default);
 			$table->string('local',255)->nullable(false);
 			$table->string('descricao')->nullable();
 			$table->date('inicio')->nullable(false);

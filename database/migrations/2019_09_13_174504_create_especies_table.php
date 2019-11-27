@@ -23,8 +23,12 @@ class CreateEspeciesTable extends Migration
 			$table->string('nome_cientifico',255)->nullable();
             $table->text('descricao')->nullable();
             $table->enum('extincao', IucnRedListEnum::values())->default(IucnRedListEnum::__default);
-            $table->text('kit')->nullable();
+            $table->unsignedBigInteger('produto_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('produto_id')
+                ->references('id')
+                ->on('produtos');
         });
     }
 

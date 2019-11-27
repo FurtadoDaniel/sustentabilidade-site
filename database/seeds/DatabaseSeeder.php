@@ -1,5 +1,7 @@
 <?php
 
+use App\AbaixoAssinado;
+use App\Enums\ProductTypeEnum;
 use App\Especie;
 use App\Evento;
 use App\Post;
@@ -18,19 +20,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         factory(User::class, 10)->create()->each(function ($user) {
-            $user->posts()->save(factory(Post::class)->make())->attachMedia(MediaUploaderFacade::fromSource(
-                'https://mumbrella.com.au/wp-content/uploads/2018/07/Australia-Post-red-post-box.jpeg'
-            )->upload(), 'foto');
+            $user->posts()->save(factory(Post::class)->make());
             $user->eventos()->save(factory(Evento::class)->make());
-            $user->produtos()->save(factory(Produto::class)->make())->attachMedia(MediaUploaderFacade::fromSource(
-                'https://mumbrella.com.au/wp-content/uploads/2018/07/Australia-Post-red-post-box.jpeg'
-            )->upload(), 'foto');
+            $user->produtos()->save(factory(Produto::class)->make());
+            $user->abaixoAssinados()->save(factory(AbaixoAssinado::class)->make());
         });
 
-        factory(Especie::class, 10)->create()->each(function ($especie) {
-            $especie->attachMedia(MediaUploaderFacade::fromSource(
-                'https://cdn.vidanimal.com.br/wp-content/uploads/aves-de-rapina2.jpg'
-            )->upload(), 'foto');
-        });
+        factory(Especie::class, 10)->create();
     }
 }

@@ -10,7 +10,7 @@ use MadWeb\Enum\Enum;
  */
 final class ProductTypeEnum extends Enum
 {
-    const __default = self::KIT;
+    const __default = self::LOJA;
 
     const KIT = 'kit';
     const LOJA = 'loja';

@@ -13,6 +13,9 @@ $factory->define(Especie::class, function (Faker $faker) {
         'nome_cientifico'   =>  $faker->words($faker->numberBetween(2, 5), true),
         'descricao'         =>  $faker->realText(),
         'extincao'          =>  IucnRedListEnum::randomValue(),
-        'tipo'              =>  EspecieTypeEnum::randomValue()
+        'tipo'              =>  EspecieTypeEnum::randomValue(),
+        'produto_id'        =>  $faker->randomElement(
+            App\Produto::doTipo('kit')->get('id')
+        )->id
     ];
 });

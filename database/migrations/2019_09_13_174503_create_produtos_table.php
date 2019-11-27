@@ -21,7 +21,7 @@ class CreateProdutosTable extends Migration
 			$table->double('preco', 10, 2)->nullable();
 			$table->string('descricao')->nullable();
             $table->enum('tipo', ProductTypeEnum::values())->default(ProductTypeEnum::__default);
-			$table->unsignedBigInteger('user_id');
+			$table->unsignedBigInteger('user_id')->nullable();
 			$table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();
